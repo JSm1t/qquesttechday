@@ -1,16 +1,43 @@
+/**
+ * Module dependencies.
+ */
 const express = require('express');
+const bluebird = require('bluebird');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+// const multer = require('multer');
+
+/**
+ * Load environment variables from .env file, where passwords are configured
+ */
+//TODO: set retrieval of config into seperate module
+dotenv.config({path: './.env.example'});
 
 const app = express();
 
+/**
+ * Mongodb Connection
+ */
+mongoose.Promise = bluebird;
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+  console.error('%s MongoDB connection error. Please make sure MongoDB is running.');
+  process.exit();
+});
+
+app.set('port', process.env.PORT || 3000);
+app.use('views', path.join(__dirname, 'views'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/profile', (req, res, next) => {

@@ -3,5 +3,14 @@
   "env": {
     "node": true
   },
-  "parserOptions": { "ecmaVersion": 6 }
+  "parserOptions": { 
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unreachable": "error",
+    "no-undef": "warn",
+    "no-console": "off",
+    "no-unused-vars": "warn"
+  }
 }
