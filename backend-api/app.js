@@ -18,6 +18,8 @@ const mongoose = require('mongoose');
 //TODO: set retrieval of config into seperate module
 dotenv.config({path: './.env.example'});
 
+const profile = require('./routes/profile');
+
 const app = express();
 
 /**
@@ -40,21 +42,7 @@ app.use(cookieParser());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/profile', (req, res, next) => {
-  
-});
-
-app.post('/profile', (req, res, next) => {
-
-});
-
-app.put('/profile', (req, res, next) => {
-
-});
-
-app.delete('/profile', (req, res, next) => {
-  
-});
+app.use('/profile', profile);
 
 app.use((req, res, next) => {
   let err = new Error('Not Found');
