@@ -37,8 +37,6 @@ app.set('view engine', 'pug');
 //   console.error('%s MongoDB connection error. Please make sure MongoDB is running.');
 //   process.exit();
 // });
-
-app.use('views', path.join(__dirname, 'views'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
