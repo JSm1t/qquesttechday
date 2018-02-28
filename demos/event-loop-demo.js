@@ -8,7 +8,7 @@ function myLogFunction(arg) {
 
 setTimeout(myLogFunction, 1500, 'wow, a timeout');
 
-fs.readFile('./text.txt', 'utf8', function(err, data) {
+fs.readFile('./files/text.txt', 'utf8', function(err, data) {
   if(err){
     throw err;
   }
