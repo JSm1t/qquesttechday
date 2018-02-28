@@ -1,0 +1,24 @@
+{
+  "name": "modules-demo",
+  "version": "1.0.0",
+  "description": "A demo for modules in Nodejs",
+  "scripts": {
+    "start": "node npm-modules-demo.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "j. smit",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2"
+  }
+}
